@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.kittycoder</groupId>
+    <artifactId>core-java-10</artifactId>
+    <version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <log4j2.version>2.9.1</log4j2.version>
+        <log4j-slf4j.version>2.9.1</log4j-slf4j.version>
+        <slf4j.verion>1.7.25</slf4j.verion>
+        <javax.mail.verion>1.6.2</javax.mail.verion>
+        <derbyclient.verion>10.11.1.1</derbyclient.verion>
+        <asm.version>5.0.4</asm.version>
+    </properties>
+
+    <modules>
+        <module>v2ch01</module>
+        <module>v2ch02</module>
+        <module>v2ch04</module>
+        <module>v2ch05</module>
+        <module>v2ch08</module>
+        <module>v2ch09</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <!--<scope>test</scope>-->
+            </dependency>
+
+            <!-- log start -->
+            <!-- slf4j核心包 -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.verion}</version>
+            </dependency>
+
+            <!--log4j2核心包-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <!--用于与slf4j保持桥接-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j-slf4j.version}</version>
+            </dependency>
+            <!-- log end -->
+
+            <!-- javax mail -->
+            <dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>${javax.mail.verion}</version>
+            </dependency>
+
+            <!-- derby client -->
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derbyclient</artifactId>
+                <version>${derbyclient.verion}</version>
+            </dependency>
+
+            <!-- asm -->
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm-commons</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <!--<scope>test</scope>-->
+        </dependency>
+        <!-- log -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+        </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,4 @@
+grant {
+    permission java.io.FilePermission "<<All FILES>>", "read";
+    permission java.util.PropertyPermission "java.version", "read";
+};
