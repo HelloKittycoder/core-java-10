@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Enumeration;
+import java.util.function.BiConsumer;
 import java.util.zip.*;
 
 /**
@@ -42,6 +43,51 @@ public class ZipTest3 {
         readFileList(FileUtil.getResourcePath("compressedFile/aaa.zip"));
         // readFileList2(FileUtil.getResourcePath("compressedFile/aaa.zip"));
         LOGGER.info("End---读取aaa.zip文件列表");
+
+        LOGGER.info("Start---读取testFileSystem.zip文件列表");
+        readZipFile(FileUtil.getResourcePath("testFileSystem.zip"), ".sql", (inputStream, entryName) -> {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            try {
+                String s;
+                System.out.println("读取文件==>" + entryName);
+                while ((s = bufferedReader.readLine()) != null) {
+                    System.out.println(s);
+                }
+            } catch (IOException e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+        });
+        LOGGER.info("End---读取testFileSystem.zip文件列表");
+    }
+
+    /**
+     * 读取压缩包中带指定后缀的文件
+     * @param zipFilePath 压缩包路径
+     * @param fileExt 需要指定的后缀
+     * @param consumer 调用者对文件的处理
+     */
+    public static void readZipFile(String zipFilePath, String fileExt, BiConsumer<InputStream, String> consumer) {
+        try {
+            ZipFile zipFile = new ZipFile(zipFilePath, Charset.forName("GBK"));
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                String entryName = entry.getName();
+                if (!entry.isDirectory() && entryName.endsWith(fileExt)) {
+                    InputStream inputStream = zipFile.getInputStream(entry);
+                    try {
+                        // inputStream的具体逻辑交给外部调用者来处理
+                        consumer.accept(inputStream, entryName);
+                    } finally {
+                        if (inputStream != null) {
+                            inputStream.close();
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // 将文件或目录压缩成zip文件（不用递归，手动穷举时的写法）
