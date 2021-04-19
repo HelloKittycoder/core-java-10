@@ -1,6 +1,8 @@
 package zip;
 
 import common.FileUtil;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,6 +60,18 @@ public class ZipTest3 {
             }
         });
         LOGGER.info("End---读取testFileSystem.zip文件列表");
+    }
+
+    // 简单读取指定目录下的zip压缩文件，这里没有递归去读
+    @Test
+    @Ignore
+    public void testAaa() {
+        File file = new File("C:\\Users\\shucheng.luo\\Downloads");
+        File[] files = file.listFiles((dir, name) -> name.endsWith(".zip"));
+        System.out.println(files);
+        for (File f : files) {
+            System.out.println(f.getAbsolutePath());
+        }
     }
 
     /**
