@@ -22,6 +22,8 @@
     </properties>
 
     <modules>
+        <module>v1ch03</module>
+        <module>v1ch04</module>
         <module>v1ch05</module>
         <module>v1ch06</module>
         <module>v1ch07</module>

@@ -2,6 +2,36 @@ java核心技术（第10版）学习
 [原书代码下载](https://horstmann.com/corejava/corejava10.zip)
 
 #### 卷1 基础知识
+- **第3章** [Java的基本程序设计结构]()
+v1ch03 书籍配套代码  
+**inputTest包**
+InputTest（3.7.1 读取输入）  
+**retirement包**
+Retirement（3.8.3 循环 while）  
+**retirement2包**
+Retirement2（3.8.3 循环 do-while）  
+**lotteryOdds包**
+LotteryOdds（3.8.4 确定循环）  
+**bigIntegerTest包**
+BigIntegerTest（3.9 大数值）  
+**lotteryDrawing包**
+LotteryDrawing（3.10.5 数组排序）  
+**compoundInterest包**
+CompoundInterest（3.10.6 多维数组）  
+**lotteryArray包**
+LotteryArray（3.10.7 不规则数组）  
+
+- **第4章** [对象与类]()
+v1ch04 书籍配套代码  
+**calendarTest包**
+CalendarTest（4.2.3 更改器方法与访问器方法）  
+**employeeTest包**
+EmployeeTest（4.3.1 Employee类）  
+**paramTest包**
+ParamTest（4.5 方法参数）  
+**constructorTest包**
+ConstructorTest（4.6 对象构造）  
+
 - **第5章** [继承]()  
 v1ch05 书籍配套代码  
 **inheritance包**  
