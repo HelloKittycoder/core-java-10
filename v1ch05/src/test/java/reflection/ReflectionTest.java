@@ -12,25 +12,26 @@ import java.lang.reflect.Modifier;
  */
 public class ReflectionTest {
 
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
         // Double
         printClassInfo("java.lang.Double");
+        // printClassInfo("java.lang.String");
         // printClassInfo("java.util.List");
     }
 
     // 自己写的
-    public static void printClassInfo(String className) throws ClassNotFoundException {
+    public static void printClassInfo(String className) {
         try {
             // print class name and superclass name (if != Object)
             Class<?> cl = Class.forName(className);
             Class<?> superCl = cl.getSuperclass();
             String modifiers = Modifier.toString(cl.getModifiers());
             if (modifiers.length() > 0) System.out.print(modifiers + " ");
-            System.out.print("class " + className);
+            System.out.print("class " + className + " ");
             if (superCl != null && superCl != Object.class)
-                System.out.print(" extends " + superCl.getName());
+                System.out.print("extends " + superCl.getName() + " ");
 
-            System.out.println(" {");
+            System.out.println("{");
             printConstructors(cl);
             System.out.println();
             printMethods(cl);

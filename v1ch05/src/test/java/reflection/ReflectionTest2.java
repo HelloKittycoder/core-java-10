@@ -16,6 +16,7 @@ public class ReflectionTest2 {
     public static void main(String[] args) throws ClassNotFoundException {
         // Double
         printClassInfo("java.lang.Double");
+        // printClassInfo("java.lang.String");
         // printClassInfo("java.util.List");
     }
 
@@ -25,16 +26,24 @@ public class ReflectionTest2 {
         Class<?> superClazz = clazz.getSuperclass();
 
         String modifiers = Modifier.toString(clazz.getModifiers());
-        sb.append(modifiers + className);
-        if (superClazz != null && superClazz != Object.class) {
-            sb.append(" extends " + superClazz.getName() + " {").append(LINE_SEPARATOR);
+        if (modifiers.length() > 0) {
+            sb.append(modifiers + " ");
         }
+        sb.append("class " + className + " ");
+        if (superClazz != null && superClazz != Object.class) {
+            sb.append("extends " + superClazz.getName() + " ");
+        }
+        sb.append("{" + LINE_SEPARATOR);
 
         // 打印构造器
-        Constructor<?>[] ctors = clazz.getConstructors();
+        Constructor<?>[] ctors = clazz.getDeclaredConstructors();
         for (Constructor ctor : ctors) {
+            sb.append("\t");
             String ctorModifiers = Modifier.toString(ctor.getModifiers());
-            sb.append("\t").append(ctorModifiers + " " + className + "(");
+            if (ctorModifiers.length() > 0) {
+                sb.append(ctorModifiers + " ");
+            }
+            sb.append(className + "(");
             if (ctor.getParameterCount() > 0) {
                 Class[] parameterTypes = ctor.getParameterTypes();
                 for (int i = 0; i < parameterTypes.length; i++) {
@@ -51,8 +60,13 @@ public class ReflectionTest2 {
         // 打印方法
         Method[] methods = clazz.getDeclaredMethods();
         for (Method m : methods) {
+            sb.append("\t");
             String methodModifiers = Modifier.toString(m.getModifiers());
-            sb.append("\t").append(methodModifiers + " " + m.getReturnType().getName() + " " + m.getName() + "(");
+            if (methodModifiers.length() > 0) {
+                sb.append(methodModifiers + " ");
+            }
+            sb.append(m.getReturnType().getName() + " ");
+            sb.append(m.getName() + "(");
             if (m.getParameterCount() > 0) {
                 Class<?>[] parameterTypes = m.getParameterTypes();
                 for (int i = 0; i < parameterTypes.length; i++) {
@@ -69,9 +83,14 @@ public class ReflectionTest2 {
         // 打印属性
         Field[] fields = clazz.getDeclaredFields();
         for (Field f : fields) {
+            sb.append("\t");
             String fieldModifiers = Modifier.toString(f.getModifiers());
-            sb.append("\t").append(fieldModifiers + " " + f.getType().getName() + " " + f.getName() + ";")
-                .append(LINE_SEPARATOR);
+            if (fieldModifiers.length() > 0) {
+                sb.append(fieldModifiers + " ");
+            }
+            sb.append(f.getType().getName() + " ")
+               .append(f.getName() + ";")
+               .append(LINE_SEPARATOR);
         }
         sb.append("}");
 
