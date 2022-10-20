@@ -90,6 +90,8 @@ DoubleBraceInitTest（双括号初始化）*
 GetClassTest（获取当前类的类名）*  
 **staticInnerClass包**  
 StaticInnerClassTest（6.4.7 静态内部类）  
+**proxy包**  
+ProxyTest（6.5.2 创建代理对象）  
 
 - **第7章** [异常、断言和日志]()  
 v1ch07 书籍配套代码  
