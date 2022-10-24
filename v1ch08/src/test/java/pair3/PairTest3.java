@@ -29,12 +29,6 @@ public class PairTest3 {
     public static void printBuddies(Pair<? extends Employee> p) {
         Employee first = p.getFirst();
         Employee second = p.getSecond();
-        System.out.println(first.getName() + " and " + second.getName());
-    }
-
-    public static void minmaxBonus(Pair<? extends Employee> p) {
-        Employee first = p.getFirst();
-        Employee second = p.getSecond();
         System.out.println(first.getName() + " and " + second.getName() + " are buddies");
     }
 
