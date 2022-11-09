@@ -42,7 +42,7 @@ public class Item implements Comparable<Item> {
         if (otherObject == null) return false;
         if (getClass() != otherObject.getClass()) return false;
         Item other = (Item) otherObject;
-        return Objects.equals(description, other.description);
+        return Objects.equals(description, other.description) && partNumber == other.partNumber;
     }
 
     public int hashCode() {

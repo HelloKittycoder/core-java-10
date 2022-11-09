@@ -22,7 +22,7 @@ public class SetTest {
         test(Files.newInputStream(path));
     }
 
-    public static void test(InputStream inputStream) throws FileNotFoundException {
+    public static void test(InputStream inputStream) {
         Set<String> words = new HashSet<>(); // HashSet implements Set
         long totalTime = 0;
 

@@ -31,5 +31,8 @@ public class MapTest {
 
         // look up a value
         System.out.println(staff.get("157-62-7935"));
+
+        // iterate through all entries
+        staff.forEach((k, v) -> System.out.println("key=" + k + ", value=" + v));
     }
 }
