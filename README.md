@@ -199,6 +199,9 @@ FinalKeywordTest（14.5.9 final变量）
 **atomic包（14.5.10 原子性）***  
 AtomicClassTest（测试直接使用Long时的并发问题）  
 AtomicClassTest2（测试使用AtomicLong是线程安全的）  
+**threadLocalTest包（14.5.12 线程局部变量）***  
+ThreadLocalTest（测试直接用SimpleDateFormat时的并发问题）  
+ThreadLocalTest2（测试使用使用ThreadLocal时，再用SimpleDateFormat是线程安全的）  
 **blockingQueue包**  
 BlockingQueueTest（14.6 阻塞队列）  
 **atomicUpdateMapEntry包***  
