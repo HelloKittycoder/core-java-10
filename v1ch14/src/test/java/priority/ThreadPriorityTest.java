@@ -16,7 +16,7 @@ public class ThreadPriorityTest {
 
         Runnable r = () -> {
 
-            System.out.println(Thread.currentThread().getName() + "p riority="
+            System.out.println(Thread.currentThread().getName() + " priority="
                     + Thread.currentThread().getPriority());
             System.out.println(Thread.currentThread().getName() + " Run begin");
 
