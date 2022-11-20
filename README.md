@@ -202,6 +202,8 @@ AtomicClassTest2（测试使用AtomicLong是线程安全的）
 **threadLocalTest包（14.5.12 线程局部变量）***  
 ThreadLocalTest（测试直接用SimpleDateFormat时的并发问题）  
 ThreadLocalTest2（测试使用使用ThreadLocal时，再用SimpleDateFormat是线程安全的）  
+**readWriteLock包***  
+SynchBankTest（14.5.14 读/写锁）  
 **blockingQueue包**  
 BlockingQueueTest（14.6 阻塞队列）  
 **atomicUpdateMapEntry包***  
