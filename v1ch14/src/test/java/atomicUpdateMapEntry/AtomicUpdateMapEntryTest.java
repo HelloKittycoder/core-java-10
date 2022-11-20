@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.LongAdder;
 
 /**
- * 14.7.3 映射条目的原子更新
+ * 14.7.2 映射条目的原子更新
  *
  * 这里多线程情况下，反而比单线程慢了（多线程 54ms；单线程 22ms），原因后续再看下
  * Created by shucheng on 2020/10/31 22:17
@@ -25,7 +25,6 @@ public class AtomicUpdateMapEntryTest {
         List<String> words = Arrays.asList(contents.split("\\PL+"));
 
         Map<String, LongAdder> counts = new ConcurrentHashMap<>();
-        List<Thread> listOfThreads = new ArrayList<>();
 
         int threadNum = 10;
         // 根据线程的数量划分区间，调用统计方法
@@ -37,10 +36,6 @@ public class AtomicUpdateMapEntryTest {
                 putMap(intervalArr[0], intervalArr[1], words, counts);
             });
             thread.start();
-            listOfThreads.add(thread);
-        }
-
-        for (Thread thread : listOfThreads) {
             thread.join();
         }
         System.out.println("多线程花了" + (System.currentTimeMillis() - startTime) + "ms");
