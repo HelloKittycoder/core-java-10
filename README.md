@@ -223,6 +223,7 @@ ThreadPoolTest（14.9.1 线程池）
 ScheduledExecutorServiceTest（14.9.2 预定执行）  
 **forkJoin包**  
 ForkJoinTest（14.9.4 Fork-Join框架）  
+ForkJoinTest2（Fork-Join框架和其他方式性能比较，以14.9.4代码为例）  
 **synchronizer包***  
 SemaphoreTest（14.10.1 信号量）  
 CountDownLatchTest（14.10.2 倒计时门栓）  
