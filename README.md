@@ -216,6 +216,8 @@ ConcurrentHashSetTest（14.7.4 并发集视图）
 ParallelArrayAlgorithmTest（14.7.6 并行数组算法）  
 **future包**  
 FutureTest（14.8 Callable与Future）  
+FutureTest2（FutureTest的单线程版本）  
+FutureTest3（FutureTest的线程池版本）  
 **threadPool包**  
 ThreadPoolTest（14.9.1 线程池）  
 ScheduledExecutorServiceTest（14.9.2 预定执行）  

@@ -18,12 +18,17 @@ public class FutureTest {
 
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
-            // D:\Code\shucheng\IntelliJIdeaProjects\gitProjects\jdk1.8-source-study\src
+            /**
+             * D:\Code\shucheng\IntelliJIdeaProjects\gitProjects\jdk1.8-source-study\src
+             * volatile
+             * 2030ms
+             */
             System.out.print("Enter base directory (e.g. /opt/jdk1.8.0/src): ");
             String directory = in.nextLine();
             System.out.print("Enter keyword (e.g. volatile): ");
             String keyword = in.nextLine();
 
+            long start = System.currentTimeMillis();
             MatchCounter counter = new MatchCounter(new File(directory), keyword);
             FutureTask<Integer> task = new FutureTask<>(counter);
             Thread t = new Thread(task);
@@ -33,6 +38,7 @@ public class FutureTest {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {}
+            System.out.println("耗时：" + (System.currentTimeMillis() - start) + "ms");
         }
     }
 }
