@@ -35,7 +35,7 @@ public class ScheduledExecutorServiceTest {
     }
 
     /**
-     * scheduleAtFixedRate(Runnable task, long initialDelay, long delay, TimeUnit unit)
+     * scheduleAtFixedRate(Runnable task, long initialDelay, long period, TimeUnit unit)
      * 预定在初始的延迟结束后，周期性地运行给定的任务，周期长度是period
      */
     public static void testScheduleAtFixedRate() {
