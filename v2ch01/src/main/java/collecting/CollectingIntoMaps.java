@@ -42,6 +42,20 @@ public class CollectingIntoMaps {
                     return union;
                 }));
         System.out.println("countryLanguageSets: " + countryLanguageSets);
+
+        // 如果出现相同key下有多个value的情况，把这个多个value放到一个List中，下面的写法有点麻烦（更简单的写法见GroupByPartition）
+        Map<Integer, List<String>> idToName2 =
+                people2().collect(Collectors.toMap(Person::getId, p -> {
+                            List<String> list = new ArrayList<>();
+                            list.add(p.getName());
+                            return list;
+                        },
+                        (a, b) -> {
+                            List<String> union = new ArrayList<>(a);
+                            union.addAll(b);
+                            return union;
+                        }));
+        System.out.println("idToName2: " + idToName2);
     }
 
     public static Stream<Person> people() {
@@ -51,6 +65,11 @@ public class CollectingIntoMaps {
                 new Person(1003, "Mary"));*/
         return Stream.of(new Person(1001, "Peter"), new Person(1002, "Paul"),
                     new Person(1003, "Mary"));
+    }
+
+    public static Stream<Person> people2() {
+        return Stream.of(new Person(1001, "Peter"), new Person(1001, "Peter2"), new Person(1002, "Paul"),
+                new Person(1003, "Mary"));
     }
 
     public static class Person {

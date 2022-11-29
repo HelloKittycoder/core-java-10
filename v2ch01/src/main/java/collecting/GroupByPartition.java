@@ -24,5 +24,47 @@ public class GroupByPartition {
                 Collectors.partitioningBy(l -> l.getLanguage().equals("en")));
         List<Locale> englishLocales = englishAndOtherLocales.get(true);
         System.out.println(englishLocales);
+
+        /**
+         * 以下是基于CollectingIntoMaps中处理Person流中，一个key对多个value的改进写法
+         * 下面是工作中常用的使用场景：
+         */
+        Map<Integer, List<Person>> idToPerson = people2().collect(Collectors.groupingBy(Person::getId));
+        System.out.println(idToPerson);
+
+        Map<Integer, List<String>> idToName = people2().collect(
+                Collectors.groupingBy(Person::getId, Collectors.mapping(Person::getName, Collectors.toList())));
+        System.out.println(idToName);
+    }
+
+    public static Stream<Person> people2() {
+        return Stream.of(new Person(1001, "Peter"), new Person(1001, "Peter2"), new Person(1002, "Paul"),
+                new Person(1003, "Mary"));
+    }
+
+    public static class Person {
+        private int id;
+        private String name;
+
+        public Person(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    '}';
+        }
     }
 }
