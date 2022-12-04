@@ -19,10 +19,11 @@ public class DataInputTest {
         File file = new File(resourcePath);
         if (!file.exists()) {
             file.createNewFile();
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write("abcdefghijklmn");
-            fileWriter.close();
         }
+
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write("abcdefghijklmn");
+        fileWriter.close();
     }
 
     // randomAccess.txt的文件内容为abcdefghijklmn

@@ -31,7 +31,8 @@ public class RandomAccessTest {
 
             // read employees in reverse order
             for (int i = n - 1; i >= 0; i--) {
-                newStaff[i] = new Employee();
+                // newStaff[i] = new Employee();
+                // lsc注：上面这行没必要写
                 in.seek(i * Employee.RECORD_SIZE);
                 newStaff[i] = readData(in);
             }

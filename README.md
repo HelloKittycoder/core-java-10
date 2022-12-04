@@ -257,8 +257,10 @@ ParallelStreams（1.14 并行流）
 
 - **第2章** [输入与输出]()  
 v2ch02 书籍配套代码  
+**textFile包（2.2.3 以文本格式存储对象）**  
+TextFileTest  
 **randomAccess、randomAccess2包**  
-RandomAccessTest、RandomAccessTest2（2.3.2 随机访问文件）  
+RandomAccessTest（2.3.2 随机访问文件）  
 **zip包（2.3.3 ZIP文档）**  
 ZipTest（压缩单个文件到zip包中，查看zip包中的内容）  
 ZipTest2（压缩多个文件文件到zip包中，查看zip包中的内容）  

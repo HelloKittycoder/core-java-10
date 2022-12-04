@@ -16,7 +16,7 @@ public class FileUtil {
      * @return
      */
     public static String getResourcePath(String filePath) {
-        if (filePath == null || filePath == "") {
+        if (filePath == null || filePath.equals("")) {
             throw new RuntimeException("文件路径为空");
         }
         if (filePath.startsWith("/")) {

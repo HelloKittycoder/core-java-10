@@ -26,6 +26,12 @@ public class ReduceTest {
         sum = integerStream.reduce(Integer::sum);
         System.out.println(sum);
 
+        // 上面写法的完整形式为：
+        integerStream = Stream.iterate(1, n -> n + 1).limit(10);
+        Integer newSum = integerStream.reduce(0, (total, num) -> total + num,
+                (total1, total2) -> total1 + total2);
+        System.out.println(newSum);
+
         // 计算alice30.txt中的所有单词的字母数量之和
         String contents = readFileContent("gutenberg/alice30.txt");
         List<String> wordList = Arrays.asList(contents.split("\\PL+"));
