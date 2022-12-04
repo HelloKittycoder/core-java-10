@@ -39,7 +39,7 @@ public class ZipTest3 {
         LOGGER.info("Start---解压文件aaa.zip");
         File zipFile = FileUtil.getResourceFile("compressedFile/aaa.zip");
         uncompress(zipFile, FileUtil.getResourcePath("decompressedFile"));
-        LOGGER.info("Start---解压文件aaa.zip");
+        LOGGER.info("End---解压文件aaa.zip");
 
         LOGGER.info("Start---读取aaa.zip文件列表");
         readFileList(FileUtil.getResourcePath("compressedFile/aaa.zip"));
@@ -125,11 +125,12 @@ public class ZipTest3 {
         if (file.exists()) {
             // 如果目标文件所在的文件夹不存在，则自动创建所在文件夹（递归创建）
             File outputFile = new File(outputFilePath);
-            if (!outputFile.exists()) {
-                outputFile.getParentFile().mkdirs();
+            File parentDir = outputFile.getParentFile();
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
             }
 
-            try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(outputFilePath))) {
+            try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(outputFile))) {
                 compress(zout, file, "");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -211,7 +212,7 @@ public class ZipTest3 {
         try {
             while ((ze = zin.getNextEntry()) != null) {
                 String name = ze.getName();
-                File file = new File(path + "/" + name);
+                File file = new File(path, name);
                 if (ze.isDirectory()) { // 说明是目录
                     file.mkdirs();
                     LOGGER.info("entry创建目录：" + file.getAbsolutePath());
@@ -223,6 +224,7 @@ public class ZipTest3 {
                     uncompressFile(zin, file);
                     LOGGER.info("file解压文件：" + file.getAbsolutePath());
                 }
+                zin.closeEntry();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -282,14 +284,14 @@ public class ZipTest3 {
      * @throws IOException
      */
     public static File createFile(String filePath) throws IOException {
-        String resourcePath = FileUtil.getResourcePath(filePath);
-        File file = new File(resourcePath);
+        File file = FileUtil.getResourceFile(filePath);
 
-        if (!file.exists()) {
-            file.getParentFile().mkdirs();
+        File parentDir = file.getParentFile();
+        if (!parentDir.exists()) {
+            parentDir.mkdirs();
         }
 
-        FileOutputStream fos = new FileOutputStream(resourcePath);
+        FileOutputStream fos = new FileOutputStream(file);
         fos.write(file.getName().getBytes());
         fos.close();
         return file;
