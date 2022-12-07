@@ -18,29 +18,29 @@ import java.nio.file.StandardCopyOption;
  */
 public class CopyDeleteFileTest {
 
-    private Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
     public void test() throws IOException {
         Path file = createFile("operateFile/original/aaa.txt");
-        LOGGER.info("创建文件{}", file);
+        logger.info("创建文件{}", file);
         Files.write(file, "111".getBytes(StandardCharsets.UTF_8));
         Path directory = createDirectory("operateFile/destination");
-        LOGGER.info("创建目录{}", directory);
+        logger.info("创建目录{}", directory);
 
         // 将文件"operateFile/original/aaa.txt"复制到"operateFile/destination/bbb.txt"
         Path targetFile = directory.resolve("bbb.txt");
         Files.copy(file, targetFile, StandardCopyOption.REPLACE_EXISTING);
-        LOGGER.info("将文件{}复制到{}", file, targetFile);
+        logger.info("将文件{}复制到{}", file, targetFile);
 
         // 将文件"operateFile/destination/bbb.txt"移动到"operateFile/original/"下，并重命名为"ccc.txt"
         Files.move(targetFile, file.resolveSibling("ccc.txt"), StandardCopyOption.REPLACE_EXISTING);
-        LOGGER.info("将文件{}移动到{}", targetFile, file.resolveSibling("ccc.txt"));
+        logger.info("将文件{}移动到{}", targetFile, file.resolveSibling("ccc.txt"));
 
         // 删除文件"operateFile/original/ccc.txt"
         // delete：如果要删除的文件不存在时，会抛出异常；所以下面改用deleteIfExists，避免了异常的产生
         Files.deleteIfExists(file.resolveSibling("ccc.txt"));
-        LOGGER.info("删除文件{}", file);
+        logger.info("删除文件{}", file);
     }
 
     /**

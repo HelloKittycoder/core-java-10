@@ -65,10 +65,10 @@ public class FileUtil {
         File file = new File(resourcePath);
         if (!file.exists()) {
             file.createNewFile();
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(content);
-            fileWriter.close();
         }
+        FileWriter fileWriter = new FileWriter(file);
+        fileWriter.write(content);
+        fileWriter.close();
         return file.toPath();
     }
 }

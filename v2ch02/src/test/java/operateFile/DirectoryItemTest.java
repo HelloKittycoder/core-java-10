@@ -29,7 +29,7 @@ public class DirectoryItemTest {
         Path path = Paths.get(resource.toURI());
         System.out.println(path);
 
-        // 因为读取目录设计需要关闭的系统资源，所以应该使用try块
+        // 因为读取目录涉及需要关闭的系统资源，所以应该使用try块
         // 注意：Files.list方法不会进入子目录
         try (Stream<Path> entries = Files.list(path)) {
             entries.forEach(System.out::println);
@@ -49,7 +49,7 @@ public class DirectoryItemTest {
         // copyDirectory(path1, path2);
 
         Path path2 = Paths.get(Thread.currentThread().getContextClassLoader().getResource("").toURI()); // target/test-classes/
-        // 从target/test-classes/operateFile复制到target/test-classes/mytemp/operateFile2
+        // 将target/test-classes/operateFile的内容复制到target/mytemp/operateFile2
         copyDirectory(path1, path2.resolve("../mytemp/operateFile2"));
     }
 

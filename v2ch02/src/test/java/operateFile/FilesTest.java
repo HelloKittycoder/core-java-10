@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class FilesTest {
 
-    private Logger LOGGER = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
     public void test() throws IOException {
@@ -63,7 +63,7 @@ public class FilesTest {
         InputStream inputStream = Files.newInputStream(resource);
         byte[] bytes = new byte[10];
         int readLength = inputStream.read(bytes);
-        LOGGER.info(new String(bytes, 0, readLength, utf8));
+        logger.info(new String(bytes, 0, readLength, utf8));
         inputStream.close();
 
         BufferedWriter bufferedWriter = Files.newBufferedWriter(resource, StandardOpenOption.APPEND);
@@ -74,7 +74,7 @@ public class FilesTest {
         BufferedReader bufferedReader = Files.newBufferedReader(resource);
         String line;
         while ((line = bufferedReader.readLine()) != null) {
-            LOGGER.info(line);
+            logger.info(line);
         }
         bufferedReader.close();
     }

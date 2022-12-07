@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Orientation implements Serializable {
 
     public static final Orientation HORIZONTAL = new Orientation(1);
-    public static final Orientation VERTICAL = new Orientation(1);
+    public static final Orientation VERTICAL = new Orientation(2);
 
     private int value;
 

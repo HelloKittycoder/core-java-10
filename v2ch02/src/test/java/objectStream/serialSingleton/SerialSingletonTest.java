@@ -30,8 +30,14 @@ public class SerialSingletonTest {
          * 为什么enum不需要继承Serializable接口就能直接序列化呢？
          * 因为enum隐式继承了Enum类，而Enum类有实现了Serializable接口
          */
-        /*Type genericInterfaces = OrientationEnum.class.getGenericSuperclass();
-        System.out.println(genericInterfaces);*/
+        /*
+        Type genericSuperclass = OrientationEnum.class.getGenericSuperclass();
+        System.out.println(genericSuperclass); // Enum
+
+        ParameterizedType superClassParameterized = (ParameterizedType) genericSuperclass;
+        Class superClassRawType = (Class) superClassParameterized.getRawType();
+        System.out.println(superClassRawType.getGenericInterfaces()); // Comparable,Serializable
+        */
         OrientationEnum original2 = OrientationEnum.HORIZONTAL;
         String path2 = FileUtil.getResourcePath("objectStream/serialSingleton/orientationEnum.dat");
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path2))) {
