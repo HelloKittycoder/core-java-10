@@ -28,7 +28,7 @@ public class MemoryMapTest2 {
     @Test
     public void test() {
         String java_home = System.getProperty("java.home");
-        Path path = Paths.get(java_home).resolve("../javafx-src.zip"); // 20.2M
+        Path path = Paths.get(java_home).resolve("../javafx-src.zip"); // 4.96M
         calculateTime("Input Stream:", path, MemoryMapTest2::checksumInputStream); // 18ms
         calculateTime("Buffered Input Stream::", path, MemoryMapTest2::checksumBufferedInputStream); // 4ms
         calculateTime("Random Access File:", path, MemoryMapTest2::checksumRandomAccessFile); // 11.5s
@@ -71,7 +71,7 @@ public class MemoryMapTest2 {
             CRC32 crc = new CRC32();
 
             byte[] bytes = new byte[BLOCK_SIZE];
-            for (long p = 0; p < length; p++) {
+            for (long p = 0; p < length; p += BLOCK_SIZE) {
                 file.seek(p);
                 int n = file.read(bytes);
                 crc.update(bytes, 0, n);
