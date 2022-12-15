@@ -25,9 +25,9 @@ public class MemoryMapTest {
     @Test
     public void test() {
         String java_home = System.getProperty("java.home");
-        Path path = Paths.get(java_home).resolve("../javafx-src.zip"); // 20.2M
+        Path path = Paths.get(java_home).resolve("../javafx-src.zip"); // 4.96M
         calculateTime("Input Stream:", path, MemoryMapTest::checksumInputStream); // 8.5s
-        calculateTime("Buffered Input Stream::", path, MemoryMapTest::checksumBufferedInputStream); // 26ms
+        calculateTime("Buffered Input Stream:", path, MemoryMapTest::checksumBufferedInputStream); // 26ms
         calculateTime("Random Access File:", path, MemoryMapTest::checksumRandomAccessFile); // 10.8s
         calculateTime("Mapped File:", path, MemoryMapTest::checksumMappedFile); // 22ms
     }
