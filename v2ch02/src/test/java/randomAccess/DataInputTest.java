@@ -1,6 +1,6 @@
 package randomAccess;
 
-import common.FileUtil;
+import common.util.FileUtil;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package common;
+package common.util;
 
 import java.io.*;
 import java.net.URL;

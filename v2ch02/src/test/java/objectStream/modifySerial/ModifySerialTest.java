@@ -1,6 +1,6 @@
 package objectStream.modifySerial;
 
-import common.FileUtil;
+import common.util.FileUtil;
 import org.junit.Test;
 
 import java.io.*;

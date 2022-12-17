@@ -1,6 +1,6 @@
 package objectStream.serialSingleton;
 
-import common.FileUtil;
+import common.util.FileUtil;
 import org.junit.Test;
 
 import java.io.*;

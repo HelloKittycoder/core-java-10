@@ -1,6 +1,6 @@
 package zip;
 
-import common.FileUtil;
+import common.util.FileUtil;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;

@@ -1,6 +1,6 @@
 package zip;
 
-import common.FileUtil;
+import common.util.FileUtil;
 
 import java.io.*;
 import java.util.zip.ZipEntry;
