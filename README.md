@@ -282,7 +282,11 @@ DirectoryStreamTest（2.5.7 使用目录流）这个后续有时间再看
 ZipFileSystemTest（2.5.8 ZIP文件系统）  
 **memoryMap包**  
 MemoryMapTest、MemoryMapTest2（2.6.1 内存映射文件的性能）  
-2.7 正则表达式（暂时先跳过）  
+**regex包**  
+MyRegexTest（2.7 正则表达式，表2-6 正则表达式语法）  
+RegexTest（2.7 正则表达式，打印出群组边界）这个后续有时间再看  
+**match包**  
+HrefMatch（2.7 正则表达式，定位一个Web页面上的所有超文本引用，并打印它们）  
 
 - **第4章** [网络]()  
 v2ch04 书籍配套代码  
