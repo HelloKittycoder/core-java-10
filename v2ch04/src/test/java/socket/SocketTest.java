@@ -29,6 +29,7 @@ public class SocketTest {
     @Test(expected = ConnectException.class)
     public void test2() throws IOException {
         try (Socket s = new Socket("www.google.com", 80);) {
+            // 建立初始连接后，读写超时（这里测试方法写的有点问题） TODO：
             s.setSoTimeout(2000);
         }
     }
@@ -37,6 +38,7 @@ public class SocketTest {
     @Test(expected = SocketTimeoutException.class)
     public void test3() throws IOException {
         try (Socket s = new Socket();) {
+            // 建立初始连接超时
             s.connect(new InetSocketAddress("www.google.com", 80), 1000);
         }
     }

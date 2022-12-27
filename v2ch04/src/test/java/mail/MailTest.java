@@ -60,7 +60,7 @@ public class MailTest {
         }
 
         // 要运行的话，用maven时有点麻烦，java -classpath .;D:\\maven\Repository\javax\mail\javax.mail-api\1.6.2\javax.mail-api-1.6.2.jar;D:\readBookProjects\core-java-10\v2ch04\target\classes mail.MailTest
-        // 贴jar的话，些的命令可能相对简单，因为只是测试，下面改成直接从配置文件里取
+        // 贴jar的话，写的命令可能相对简单，因为只是测试，下面改成直接从配置文件里取
         // 下面是读取命令行里输入的密码
         /*Console console = System.console();
         String password = new String(console.readPassword("Password: "));*/

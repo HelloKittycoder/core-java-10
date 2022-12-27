@@ -49,6 +49,9 @@ public class PostTest {
     public static String doPost(URL url, Map<Object, Object> nameValuePairs, String userAgent,
                                 int redirects) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        if (userAgent != null)
+            connection.setRequestProperty("User-Agent", userAgent);
+
         if (redirects >= 0)
             connection.setInstanceFollowRedirects(false);
 
@@ -92,7 +95,14 @@ public class PostTest {
                 response.append(in.nextLine());
                 response.append("\n");
             }
-            return response.toString();
+        } catch (IOException e) {
+            InputStream err = connection.getErrorStream();
+            if (err == null) throw e;
+            try (Scanner in = new Scanner(err)) {
+                response.append(in.nextLine());
+                response.append("\n");
+            }
         }
+        return response.toString();
     }
 }
