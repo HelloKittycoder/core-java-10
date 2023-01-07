@@ -121,6 +121,22 @@ public class DBUtil {
      * @param result the result set to be printed
      */
     public static void showResultSet(ResultSet result) throws SQLException {
+        int columnCount = printColumnTitle(result);
+        while (result.next()) {
+            printRowData(result, columnCount);
+        }
+    }
+
+    /**
+     * Prints a result set
+     * @param result the result set to be printed
+     */
+    public static void showRow(ResultSet result) throws SQLException {
+        int columnCount = printColumnTitle(result);
+        printRowData(result, columnCount);
+    }
+
+    private static int printColumnTitle(ResultSet result) throws SQLException {
         ResultSetMetaData metaData = result.getMetaData();
         int columnCount = metaData.getColumnCount();
 
@@ -129,13 +145,14 @@ public class DBUtil {
             System.out.print(metaData.getColumnLabel(i));
         }
         System.out.println();
+        return columnCount;
+    }
 
-        while (result.next()) {
-            for (int i = 1; i <= columnCount; i++) {
-                if (i > 1) System.out.print(", ");
-                System.out.print(result.getString(i));
-            }
-            System.out.println();
+    private static void printRowData(ResultSet result, int columnCount) throws SQLException {
+        for (int i = 1; i <= columnCount; i++) {
+            if (i > 1) System.out.print(", ");
+            System.out.print(result.getString(i));
         }
+        System.out.println();
     }
 }

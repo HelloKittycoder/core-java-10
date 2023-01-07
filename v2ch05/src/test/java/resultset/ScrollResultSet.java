@@ -30,11 +30,10 @@ public class ScrollResultSet {
 
                 boolean done = false;
                 Scanner in = new Scanner(System.in);
-                int lastRow = 0;
-                while (!done) {;
-                    // 这里R2，将游标指向2，显示的是从第2条至最后一条数据
-                    // N，如果上一次是R2，这次就将游标指向3，显示从第3条至最后一条数据
-                    // P，如果上一次是N，这一次就将游标指向2，显示从第2条至最后一条数据
+                while (!done) {
+                    // 这里R2，将游标指向2，显示的是第2条数据
+                    // N，如果上一次是R2，这次就将游标指向3，显示第3条数据
+                    // P，如果上一次是N，这一次就将游标指向2，显示第2条数据
                     System.out.println("Please input rnum(e.g.'R2') or 'N)ext', 'P)revious', 'Q)uit'");
                     String input = in.nextLine();
                     if (input != null) {
@@ -43,20 +42,17 @@ public class ScrollResultSet {
                             // 获取行号
                             int sel = Integer.parseInt(input.substring(1));
                             result = rs.absolute(sel);
-                            lastRow = rs.getRow();
                         } else if (input.startsWith("N")) { // 下一条
-                            rs.absolute(lastRow);
-                            result = rs.relative(1);
-                            lastRow = rs.getRow();
+                            // result = rs.relative(1);
+                            result = rs.next();
                         } else if (input.startsWith("P")) { // 上一条
-                            rs.absolute(lastRow);
+                            // result = rs.relative(-1);
                             result = rs.previous();
-                            lastRow = rs.getRow();
                         } else if (input.startsWith("Q")) { // 退出
                             done = true;
                         }
                         if (result) {
-                            DBUtil.showResultSet(rs);
+                            DBUtil.showRow(rs);
                         }
                     }
                 }

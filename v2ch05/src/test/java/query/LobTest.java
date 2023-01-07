@@ -87,7 +87,7 @@ public class LobTest {
         ps.execute();
 
         // -- reading the columns
-        ResultSet rs = s.executeQuery("SELECT  img FROM images WHERE id = 1477");
+        ResultSet rs = s.executeQuery("SELECT img FROM images WHERE id = 1477");
         byte[] buff = new byte[1024];
 
         while (rs.next()) {
