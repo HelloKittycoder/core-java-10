@@ -79,7 +79,7 @@ public class ViewDBFrame extends JFrame {
         JPanel buttonPanel = new JPanel();
         add(buttonPanel, BorderLayout.SOUTH);
 
-        previousButton = new JButton("Previous" );
+        previousButton = new JButton("Previous");
         previousButton.addActionListener(event -> showPreviousRow());
         buttonPanel.add(previousButton);
 
@@ -197,7 +197,7 @@ public class ViewDBFrame extends JFrame {
             props.load(in);
         }
         String drivers = props.getProperty("jdbc.drivers");
-        if (drivers != null) System.setProperty("jdbc.drivers", drivers );
+        if (drivers != null) System.setProperty("jdbc.drivers", drivers);
     }
 
     /**

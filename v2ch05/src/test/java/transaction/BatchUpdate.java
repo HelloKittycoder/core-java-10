@@ -37,6 +37,7 @@ public class BatchUpdate {
         try {
             conn = DBUtil.getConnection();
 
+            conn.setAutoCommit(false);
             stat = conn.createStatement();
             /**
              * String.format(SQL_TEMPLATE, i)的结果：
@@ -50,7 +51,7 @@ public class BatchUpdate {
                 i++;
             }
             stat.executeBatch();
-
+            conn.commit();
         } catch (Exception ex) {
             if (conn != null) {
                 try {

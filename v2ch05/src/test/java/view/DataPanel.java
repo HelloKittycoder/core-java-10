@@ -25,12 +25,12 @@ public class DataPanel extends JPanel {
         fields = new ArrayList<>();
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridheight = 1;
+        gbc.gridwidth = 1;
         gbc.gridheight = 1;
 
         ResultSetMetaData rsmd = rs.getMetaData();
         for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-            gbc.gridx = i - 1;
+            gbc.gridy = i - 1;
 
             String columnName = rsmd.getColumnLabel(i);
             gbc.gridx = 0;
