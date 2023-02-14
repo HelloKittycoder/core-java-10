@@ -1,6 +1,9 @@
 package serialClone;
 
+// import com.alibaba.fastjson.JSON;
 import objectStream.serialObject.SerializeUtil;
+
+import java.lang.reflect.Type;
 
 /**
  * 2.4.6 为克隆使用序列化
@@ -23,5 +26,19 @@ public class SerialCloneTest {
         System.out.println(harry);
         System.out.println(harry2);
         System.out.println(harry3);
+
+        /**
+         * 补充：
+         * spring中的BeanUtils.copyProperties是浅拷贝
+         * 深拷贝除了用 SerializeUtil.deepCopy，还可以用fastjson先JSON.toJSONString，然后JSON.parseObject（见下面的deepCopy）
+         */
     }
+
+    /**
+     * 使用fastjson对一个对象进行深拷贝操作
+     */
+    /*public static <T> T deepCopy(T source) {
+        String s = JSON.toJSONString(source);
+        return JSON.parseObject(s, (Type) source.getClass());
+    }*/
 }
